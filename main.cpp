@@ -1,9 +1,9 @@
 #include <iostream>
 using namespace std;
 
-void display_board();
-void player_turn();
-bool gameover();
+void DisplayBoard();
+void PlayerTurn();
+bool CheckEndgame();
 char turn;
 bool draw = false;
 char board[3][3] = {{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
@@ -14,32 +14,32 @@ int main()
     cout << "Player 1 [X] --- Player 2 [O]\n";
     turn = 'X';
 
-    while (!gameover())
+    while (!CheckEndgame())
     {
-        display_board();
-        player_turn();
-        gameover();
+        DisplayBoard();
+        PlayerTurn();
+        CheckEndgame();
     }
 
     if (turn == 'O' && !draw)
     {
-        display_board();
+        DisplayBoard();
         cout << endl << endl << "Player 1 [X] Wins! Game Over!\n";
     }
     else if (turn == 'X' && !draw)
     {
-        display_board();
+        DisplayBoard();
         cout << endl << endl << "Player 2 [O] Wins! Game Over!\n";
     }
     else
     {
-        display_board();
+        DisplayBoard();
         cout << endl << endl << "Draw! Game Over!\n";
     }
     return EXIT_SUCCESS;
 }
 
-void display_board()
+void DisplayBoard()
 {
     #ifdef _WIN32
     system("cls");
@@ -61,7 +61,7 @@ void display_board()
     cout << "     |     |    " << endl;
  }
 
-void player_turn()
+void PlayerTurn()
 {
     int choice;
     int row = 0, column = 0;
@@ -90,7 +90,8 @@ void player_turn()
         case 9: row = 2; column = 2; break;
         default:
             cout << "You didn't enter a correct number! Try again\n";
-        player_turn();
+
+        PlayerTurn();
     }
 
     if (turn == 'X' && board[row][column] != 'X' && board[row][column] != 'O')
@@ -106,11 +107,11 @@ void player_turn()
     else
     {
         cout << "The cell you selected is already in use! Try again\n";
-        player_turn();
+        PlayerTurn();
     }
 }
 
-bool gameover()
+bool CheckEndgame()
 {
     for (int i = 0; i < 3; i++) //Check for a win
     {
@@ -136,5 +137,3 @@ bool gameover()
     draw = true;
     return true;
  }
-
-
