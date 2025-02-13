@@ -41,7 +41,12 @@ int main()
 
 void display_board()
 {
+    #ifdef _WIN32
+    system("cls");
+    #else
     system("clear");
+    #endif
+
     cout << "Jogo da velha\n";
     cout << "Jogador 1 [X] --- Jogador 2 [O]\n";
     cout << "---------------------" << endl << endl;
