@@ -105,7 +105,7 @@ void player_turn()
     }
     else
     {
-        cout << "The cell you chose is already in use! Try again\n";
+        cout << "The cell you selected is already in use! Try again\n";
         player_turn();
     }
 }
