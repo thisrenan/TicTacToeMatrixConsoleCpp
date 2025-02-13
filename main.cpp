@@ -10,8 +10,8 @@ char board[3][3] = {{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
 
 int main()
 {
-    cout << "Jogo da velha\n";
-    cout << "Jogador 1 [X] --- Jogador 2 [O]\n";
+    cout << "Tic Tac Toe\n";
+    cout << "Player 1 [X] --- Player 2 [O]\n";
     turn = 'X';
 
     while (!gameover())
@@ -24,17 +24,17 @@ int main()
     if (turn == 'O' && !draw)
     {
         display_board();
-        cout << endl << endl << "Jogador 1 [X] Venceu! Game Over!\n";
+        cout << endl << endl << "Player 1 [X] Wins! Game Over!\n";
     }
     else if (turn == 'X' && !draw)
     {
         display_board();
-        cout << endl << endl << "Jogador 2 [O] Venceu! Game Over!\n";
+        cout << endl << endl << "Player 2 [O] Wins! Game Over!\n";
     }
     else
     {
         display_board();
-        cout << endl << endl << "Empate! Game Over!\n";
+        cout << endl << endl << "Draw! Game Over!\n";
     }
     return EXIT_SUCCESS;
 }
@@ -47,8 +47,8 @@ void display_board()
     system("clear");
     #endif
 
-    cout << "Jogo da velha\n";
-    cout << "Jogador 1 [X] --- Jogador 2 [O]\n";
+    cout << "Tic Tac Toe\n";
+    cout << "Player 1 [X] --- Player 2 [O]\n";
     cout << "---------------------" << endl << endl;
     cout << "     |     |    " << endl;
     cout << "  " << board[0][0] << "  |  " << board[0][1] << "  |  " << board[0][2] << endl;
@@ -68,11 +68,11 @@ void player_turn()
 
     if (turn == 'X')
     {
-        cout << "Turno do jogador 1 [X]: ";
+        cout << "Player 1 turn [X]: ";
     }
     else if (turn == 'O')
     {
-        cout << "Turno do jogador 2 [O]: ";
+        cout << "Player 2 turn [O]: ";
     }
 
     cin >> choice;
@@ -105,14 +105,14 @@ void player_turn()
     }
     else
     {
-        cout << "The cell you chose is used! Try again\n";
+        cout << "The cell you chose is already in use! Try again\n";
         player_turn();
     }
 }
 
 bool gameover()
 {
-    for (int i = 0; i < 3; i++)//Check for a win
+    for (int i = 0; i < 3; i++) //Check for a win
     {
         if ((board[i][0] == board[i][1] && board[i][1] == board[i][2]) || (board[0][i] == board[1][i]
             && board[1][i] == board[2][i]) || (board[0][0] == board[1][1] && board[1][1] == board[2][2]) ||
@@ -122,7 +122,7 @@ bool gameover()
         }
     }
 
-    for (int i = 0; i < 3; i++)//Check for draw
+    for (int i = 0; i < 3; i++) //Check for draw
     {
         for (int j = 0; j < 3; j++)
         {
